@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\Category;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class StoreRequest extends FormRequest
 {
@@ -16,6 +17,14 @@ class StoreRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation()
+    {
+        $this->merge([
+           'slug' => Str::slug($this->get('name')),
+           'user_id' => auth()->id(),
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,12 +33,8 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-             'first_name'   => 'required|min:3|max:25',
-             'middle_name'   => 'sometimes|nullable|min:3|max:25',
-             'last_name'   => 'required|min:3|max:25',
-             'email'        => 'required|email|unique:users,email',
-             'phone' => 'required|min:10|max:10|unique:users,phone',
-             'password' => 'required|min:6|max:25|confirmed',
+            'name' =>    'required|min:3|max:50|unique:categories,name',
+            'status' => 'required|boolean',
         ];
     }
 }

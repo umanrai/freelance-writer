@@ -44,11 +44,25 @@ class UserController extends BaseController
 
            if ($request->get('password')) {
             $data['password'] = bcrypt($data['password']);
+           } else {
+               $data = $request->except('password');
            }
 
-        $user->update(array_filter($data));
+
+        $user->update($data);
 
         return back();
    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return back();
+    }
+
+    public function show(User $user)
+    {
+        return view('admin.user.show', compact('user'));
+    }
 
 }

@@ -32,7 +32,7 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($users as $user)
+              @forelse ($users as $user)
                 <tr>
                   <td>{{ $user->id }}</td>
                   <td>{{ $user->first_name }}</td>
@@ -40,13 +40,27 @@
                   <td>{{ $user->last_name }}</td>
                   <td>{{ $user->email }}</td>
                   <td>{{ $user->phone }}</td>
-                  <td>
-                    <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary">Edit</a>
-                    <a href="" class="btn btn-danger">Delete</a>
-                   </td>
+                <td>
+                    <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary"><span data-feather="edit"></span></a>
+                    <a href="{{ route('user.show', $user->id) }}" class="btn btn-dark"><span data-feather="eye"></span></a>
+                    <a href="{{ route('user.destroy', $user->id) }}"
+                       onclick="event.preventDefault();
+                           document.getElementById('delete-user-{{ $user->id }}').submit();"
+                       class="btn btn-danger"><span data-feather="trash-2"></span></a>
+
+
+                    <form id="delete-user-{{ $user->id }}" action="{{ route('user.destroy', $user->id) }}" method="POST" style="display: none;">
+                        @csrf
+                        <input type="hidden" value="DELETE" name="_method">
+                    </form>
+                </td>
 
                 </tr>
-                @endforeach
+              @empty
+                  <tr>
+                      <td colspan="7">No User Added !</td>
+                  </tr>
+                @endforelse
               </tbody>
             </table>
           </div>
