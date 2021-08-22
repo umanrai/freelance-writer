@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', 'Admin\DashboardController@index')->name('admin.home');
 
 Auth::routes();
@@ -26,6 +25,8 @@ Route::group([ 'middleware' => [ 'auth', ] ], function () {
     Route::resources([
         'user' => 'Admin\UserController',
         'category' => 'Admin\CategoryController',
+        'tag' => 'Admin\TagController',
+
     ]);
 
 });

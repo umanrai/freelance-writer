@@ -23,12 +23,11 @@ class UserController extends BaseController
 
    public function store(StoreRequest $request)
    {
-
         $data = $request->all();
-           $data['password'] = bcrypt($data['password']);
+        $data['password'] = bcrypt($data['password']);
 
         User::create($data);
-        return back();
+       return redirect()->route('user.index')->with('success','User created successfully.');
    }
 
     public function edit(User $user)
@@ -39,7 +38,6 @@ class UserController extends BaseController
 
     public function update(User $user, UpdateRequest $request)
    {
-
         $data = $request->all();
 
            if ($request->get('password')) {
@@ -47,7 +45,6 @@ class UserController extends BaseController
            } else {
                $data = $request->except('password');
            }
-
 
         $user->update($data);
 
@@ -57,7 +54,8 @@ class UserController extends BaseController
     public function destroy(User $user)
     {
         $user->delete();
-        return back();
+        return redirect()->route('user.index')
+            ->with('success','User deleted successfully.');
     }
 
     public function show(User $user)

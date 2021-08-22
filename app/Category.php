@@ -20,7 +20,7 @@ class Category extends Model
 
     public function setUserIdAttribute ($value)
     {
-        $this->attributes['user_id'] = auth()->id();
+        $this->attributes['user_id'] = auth()->id() ?? 1;
     }
 
     public function user()

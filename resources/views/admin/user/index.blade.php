@@ -18,6 +18,12 @@
             </div>
           </div>
 
+            @if(session()->get('success'))
+                <div class="alert alert-success">
+                {{ session()->get('success') }}
+            </div><br />
+            @endif
+
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead>

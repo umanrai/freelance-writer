@@ -52,6 +52,20 @@
                   Category
                 </a>
               </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('user*') ? 'active' : '' }}" href="{{ route('user.index') }}">
+                        <span data-feather="users"></span>
+                        Customers
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('tags*') ? 'active' : '' }}" href="{{ route('tag.index') }}">
+                        <span data-feather="users"></span>
+                        Tag
+                    </a>
+                </li>
             </ul>
           </div>
         </nav>

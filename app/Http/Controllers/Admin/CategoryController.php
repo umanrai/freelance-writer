@@ -12,8 +12,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::with('user')->get();
-        return view('admin.category.index', compact('categories'));
+        $categories = Category::with('user')->paginate(25);
+        return view('admin.category.index', compact('categories' ));
     }
 
     public function create()
@@ -27,7 +27,8 @@ class CategoryController extends Controller
         $data = $request->all();
 
         Category::create($data);
-        return back();
+        return redirect()->route('category.index')->with('success','Category created successfully.');
+
     }
 
     public function edit(Category $category)
@@ -38,7 +39,7 @@ class CategoryController extends Controller
 
     public function update(Category $category, UpdateRequest $request)
     {
-
+        $category = Category::find($category);
         $data = $request->all();
 
         $category->update(array_filter($data));
@@ -49,7 +50,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return back();
+        return redirect()->route('category.index')->with('success','Category deleted successfully');
     }
 
     public function show(Category $category)
