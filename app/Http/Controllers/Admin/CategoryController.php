@@ -39,12 +39,10 @@ class CategoryController extends Controller
 
     public function update(Category $category, UpdateRequest $request)
     {
-        $category = Category::find($category);
         $data = $request->all();
-
         $category->update(array_filter($data));
 
-        return back();
+        return redirect()->route('category.index')->with('success','Category updated successfully');
     }
 
     public function destroy(Category $category)

@@ -6,7 +6,6 @@
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <div class="card uper">
-
         <div class="card-header">
             <a class="btn btn-primary" href="{{ route('tag.create') }}"> Create New Tag</a>
         </div>
@@ -46,6 +45,7 @@
                 @endforeach
                 </tbody>
             </table>
+                {{ $tags->links() }}
         </div>
     </div>
     </main>

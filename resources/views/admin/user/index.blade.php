@@ -69,6 +69,7 @@
                 @endforelse
               </tbody>
             </table>
+              {{ $users->links() }}
           </div>
         </main>
 @endsection

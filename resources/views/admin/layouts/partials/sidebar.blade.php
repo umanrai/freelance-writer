@@ -62,8 +62,16 @@
 
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('tags*') ? 'active' : '' }}" href="{{ route('tag.index') }}">
-                        <span data-feather="users"></span>
+                        <span data-feather="tag"></span>
                         Tag
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('articles*') ? 'active' : '' }}" href="{{ route('article.index') }}">
+                        <span data-feather="book-open"></span>
+                        Article
                     </a>
                 </li>
             </ul>

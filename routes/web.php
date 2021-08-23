@@ -26,6 +26,7 @@ Route::group([ 'middleware' => [ 'auth', ] ], function () {
         'user' => 'Admin\UserController',
         'category' => 'Admin\CategoryController',
         'tag' => 'Admin\TagController',
+        'article' => 'Admin\ArticleController',
 
     ]);
 
