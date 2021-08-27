@@ -29,7 +29,7 @@ class StoreRequest extends FormRequest
              'last_name'   => 'required|min:3|max:25',
              'email'        => 'required|email|unique:users,email',
              'phone' => 'required|min:10|max:10|unique:users,phone',
-             'password' => 'required|min:6|max:25|confirmed',
+             'password' => 'required|min:6|max:25|confirmed', // password === password_confirmation
         ];
     }
 }

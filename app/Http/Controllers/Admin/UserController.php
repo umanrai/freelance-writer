@@ -2,23 +2,34 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Misc\Role;
 use App\User;
 use App\Http\Requests\User\StoreRequest;
 use App\Http\Requests\User\UpdateRequest;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
 class UserController extends BaseController
 {
 
-   public function index()
+   public function index( Request $request)
    {
-        $users = User::paginate(5);
-        return view('admin.user.index', compact('users'));
+       $users = User::query();
+
+       $roleId = $request->get('role_id');
+       if (! is_null($roleId)) {
+           $users = $users->where( 'role_id', '=', $roleId );
+       }
+
+        $users = $users->paginate(5);
+        $data['roles'] = Role::all();
+        return view('admin.user.index', compact('users', 'data'));
    }
 
    public function create()
    {
-        return view('admin.user.create');
+       $data['roles'] = Role::all();
+        return view('admin.user.create', compact('data'));
    }
 
    public function store(StoreRequest $request)
@@ -32,8 +43,9 @@ class UserController extends BaseController
 
     public function edit(User $user)
    {
+       $data['roles'] = Role::all();
     // Route Model Binding
-        return view('admin.user.edit', compact('user'));
+        return view('admin.user.edit', compact('user', 'data'));
    }
 
     public function update(User $user, UpdateRequest $request)

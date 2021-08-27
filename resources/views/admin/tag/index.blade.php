@@ -26,7 +26,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($tags as $tag)
+                @forelse($tags as $tag)
                     <tr>
                         <td>{{$tag->id}}</td>
                         <td>{{$tag->title}}</td>
@@ -42,10 +42,14 @@
                             </form>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="6" class="text-center">No Tag Added !</td>
+                    </tr>
+                @endforelse
                 </tbody>
             </table>
-                {{ $tags->links() }}
+            {{ $tags->links() }}
         </div>
     </div>
     </main>

@@ -17,7 +17,7 @@ class CreateArticlesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title')->unique();
             $table->string('slug')->unique();
-            $table->text('body');
+            $table->text('body'); // Article description by client
             $table->boolean('status')->default(1);
             $table->timestamps();
         });

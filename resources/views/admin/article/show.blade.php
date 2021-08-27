@@ -23,6 +23,12 @@
                 <b>slug</b> : <a href="{{ url('article/'. $article->slug) }}" target="_blank">{{ url('article/'. $article->slug) }}</a>
             </li>
             <li>
+                <b>Wage</b> : Rs.{{ $article->wages }}
+            </li>
+            <li>
+                <b>Description</b> : {{ $article->description }}
+            </li>
+            <li>
                 <b>Status</b> : <span class="badge badge-{{ $article->status ? 'primary' : 'danger' }}">
                                 {{ $article->status ? 'Active' : 'InActive' }}
                     {{--                                Ternary Operator--}}

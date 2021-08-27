@@ -21,7 +21,8 @@ class StoreRequest extends FormRequest
     {
         $this->merge([
             'slug' => Str::slug($this->get('title')),
-            'user_id' => auth()->id(),
+            'client_id' => auth()->id(),
+            'is_completed_by_writer' => 0,
         ]);
     }
 
@@ -33,8 +34,12 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' =>    'required|min:3|max:50|unique:articles,title',
+            'title' =>  'required|min:3|max:100|unique:articles,title',
+            'body' =>  'required|min:5|max:700',
             'status' => 'required|boolean',
+            'wages' => 'required|integer',
+            'category_id' => 'required',
+            'tag_id' => 'required',
         ];
     }
 }

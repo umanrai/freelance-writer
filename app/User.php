@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name','middle_name','last_name', 'email', 'phone', 'password',
+        'first_name','middle_name','last_name', 'email', 'phone', 'password', 'role_id'
     ];
 
     /**
@@ -41,6 +41,21 @@ class User extends Authenticatable
     public function categories()
     {
         return $this->hasMany(Category::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role_id === \App\Misc\Role::ROLE_ADMIN;
+    }
+
+    public function isWriter()
+    {
+        return $this->role_id === \App\Misc\Role::ROLE_WRITER;
+    }
+
+    public function isClient()
+    {
+        return $this->role_id === \App\Misc\Role::ROLE_CLIENT;
     }
 
 }

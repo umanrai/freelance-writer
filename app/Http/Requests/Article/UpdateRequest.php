@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests\Article;
 
-use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+use Illuminate\Support\Str;
+
+class UpdateRequest extends StoreRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -16,6 +17,11 @@ class UpdateRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation()
+    {
+        //
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -23,10 +29,24 @@ class UpdateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'title'   =>'required|min:3|max:20|unique:articles,title,' . $this->get('_id'),
-            'body' =>'required|min:5|max:400',
-            'status' => 'required|boolean',
-        ];
+
+        if (auth()->user()->isAdmin()) {
+            return [
+                'writer_id' => 'required',
+            ];
+        }
+
+        if (auth()->user()->isWriter()) {
+            return [
+                'description' => 'required|max:9000',
+                'is_completed_by_writer' => 'boolean',
+            ];
+        }
+
+        return array_merge(
+            parent::rules(), [
+                'title'   =>'required|min:3|max:100|unique:articles,title,' . $this->get('_id'),
+            ]
+        );
     }
 }

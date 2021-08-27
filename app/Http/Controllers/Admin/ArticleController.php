@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Article;
+use App\Category;
 use App\Http\Requests\Article\StoreRequest;
 use App\Http\Requests\Article\UpdateRequest;
+use App\Misc\Role;
+use App\Tag;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,9 +19,22 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request)
     {
-        $articles = Article::with('user')->paginate(5);
+        $articles = Article::with('client')
+            ->when(auth()->user()->role_id !== \App\Misc\Role::ROLE_ADMIN, function ($query) {
+
+                if (auth()->user()->isWriter()) {
+                    $query->where( 'writer_id', auth()->id() );
+                } else {
+                    $query->where( 'client_id', auth()->id() );
+                }
+            })
+            ->when(!is_null($request->get('is_completed_by_writer')), function ($query) {
+                $query->where('is_completed_by_writer', '=', request('is_completed_by_writer'));
+            })
+            ->latest()
+            ->paginate(5);
         return view('admin.article.index', compact('articles'));
     }
 
@@ -28,7 +45,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('admin.article.create');
+        $data['categories'] = Category::get([ 'name', 'id' ]);
+        $data['tags'] = Tag::get([ 'title as name', 'id' ]);
+        return view('admin.article.create', compact('data'));
     }
 
     /**
@@ -39,7 +58,6 @@ class ArticleController extends Controller
      */
     public function store(StoreRequest $request)
     {
-
         $data = $request->all();
         Article::create($data);
         return redirect()->route('article.index')->with('success','Article created successfully.');
@@ -65,7 +83,10 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('admin.article.edit', compact('article'));
+        $data['categories'] = Category::get([ 'name', 'id' ]);
+        $data['tags'] = Tag::get([ 'title as name', 'id' ]);
+        $data['writers'] = User::where('role_id', '=', Role::ROLE_WRITER)->pluck('first_name', 'id');
+        return view('admin.article.edit', compact('article', 'data'));
     }
 
     /**

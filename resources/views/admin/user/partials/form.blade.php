@@ -49,4 +49,28 @@
     <div class="error">{{ $errors->first('password_confirmation') }}</div>
 @endif
   </div>
+
+<div class="form-group">
+    <label for="exampleInputPassword1">Role</label>
+
+
+    <select name="role_id" id="role_id" class="form-control">
+        <option disabled selected> Select Role</option>
+
+        @php
+
+            $selectedRole = old('role_id') ?? $user->role_id ?? 0;
+
+        @endphp
+
+        @foreach($data['roles'] as $id => $role)
+            <option value="{{ $id }}" {{ $selectedRole == $id ? 'selected' : '' }}>{{ $role }}</option>
+        @endforeach
+
+    </select>
+
+    @if($errors->has('password_confirmation'))
+        <div class="error">{{ $errors->first('password_confirmation') }}</div>
+    @endif
+</div>
   <button type="submit" class="btn btn-primary">Submit</button>

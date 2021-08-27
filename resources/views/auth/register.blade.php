@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('content')
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+<main role="main" class="col-md-12" style="margin-top: 10px">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -12,12 +12,25 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
 
-                                @error('name')
+                                @error('first_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus>
+
+                                @error('last_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -59,6 +72,18 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="exampleROLE" class="col-md-4 col-form-label text-md-right">Register As</label>
+
+                            <div class="col-md-6">
+                            <input id="exampleROLE" type="radio" name="role_id" value="{{ \App\Misc\Role::ROLE_WRITER }}" {{ (old('role_id') ?? null) == \App\Misc\Role::ROLE_WRITER ? 'checked' : '' }}> {{ \App\Misc\Role::ROLE_WRITER_SLUG }}
+                            <input  id="exampleROLE"    type="radio" name="role_id" value="{{ \App\Misc\Role::ROLE_CLIENT }}" {{ (old('role_id') ?? null) == \App\Misc\Role::ROLE_CLIENT ? 'checked' : '' }}> {{ \App\Misc\Role::ROLE_CLIENT_SLUG }}
+                            </div>
+                            @if($errors->has('role_id'))
+                                <div class="error">{{ $errors->first('role_id') }}</div>
+                            @endif
                         </div>
 
                         <div class="form-group row mb-0">

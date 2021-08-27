@@ -17,6 +17,6 @@
      <form action="{{ route('user.store') }}" method="POST">
      @csrf
      @include('admin.user.partials.form')
-</form>
+    </form>
      </main>
 @endsection
