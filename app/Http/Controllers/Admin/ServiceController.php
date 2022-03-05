@@ -86,7 +86,7 @@ class ServiceController extends Controller
     {
         $request->validate([
             'icon' => 'required',
-            'title' => 'required|min:3|max:100|unique:services,title',
+            'title' => 'required|min:3|max:100|unique:services,title,'. $request->get('id'),
             'summary' => 'required|min:10|max:150',
             'description' => 'required|max:500',
 

@@ -30,7 +30,7 @@
                     <tbody>
                     @forelse($services as $service)
                         <tr>
-                             <td>{{$service->icon}}</td>
+                             <td>{!! $service->icon !!}</td>
                             <td>{{$service->title}}</td>
                             <td>{{Str::limit($service->summary, 20) }}</td>
                             <td>{{Str::limit($service->description, 40) }}</td>

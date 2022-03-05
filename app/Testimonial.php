@@ -13,6 +13,11 @@ class Testimonial extends Model
         'statement',
     ];
 
+    public function shortDesignation()
+    {
+        return \Str::limit($this->designation, 15);
+    }
+
     public function getImage()
     {
         $filePath = 'storage/images/testimonial/'. ($this->image ?? 'no.png');

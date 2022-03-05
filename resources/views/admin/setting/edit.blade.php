@@ -17,7 +17,10 @@
                     <br/>
                 @endif
 
-                @include('admin.setting.partials.form')
+                <form action="{{ route('setting.update') }}" method="POST">
+                    @csrf
+                    @include('admin.setting.partials.form')
+                </form>
             </div>
         </div>
     </main>

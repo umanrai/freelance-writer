@@ -12,7 +12,7 @@ $factory->define(Portfolio::class, function (Faker $faker) {
         'description' => $faker->text,
         'url' => $faker->url,
         'title' => $faker->name,
-        'type' => rand(0, 4),
+        'type' => rand(0, 2),
         'date' => now(),
     ];
 });

@@ -30,7 +30,11 @@
                     @method('PUT')
                     <div class="form-group">
                         <label class="form-check-label" for="icon">Icon:</label>
-                        <input type="text" class="form-control" name="icon" id="icon" value="{{ old('icon') ?? $service->icon }}" required />
+
+                        <textarea name="icon" id="icon" class="form-control" required>{{ old('icon') ?? $service->icon }}</textarea>
+
+
+                        <input type="hidden" class="form-control" name="id" id="id" value="{{ old('id') ?? $service->id }}" required />
 
                         <div class="valid-feedback"></div>
                         @if($errors->has('icon'))

@@ -11,6 +11,14 @@ class PortfolioType
 
     public static function types(): array
     {
+//        $a = [
+//            self::TYPE_ALL => 'All',
+//            self::TYPE_BLOG => 'Blog',
+//            self::TYPE_ARTICLE => 'Article',
+//        ];
+//
+//        $a[2]
+        // indexed array
         return [
             self::TYPE_ALL => 'All',
             self::TYPE_BLOG => 'Blog',

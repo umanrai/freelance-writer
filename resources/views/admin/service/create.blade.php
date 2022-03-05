@@ -28,7 +28,7 @@
 
                     <div class="form-group">
                         <label class="form-check-label" for="icon">Icon:</label>
-                        <input type="text" class="form-control" name="icon" id="icon" value="{{ old('icon') }}" required />
+                        <textarea name="icon" id="icon" class="form-control" required>{{ old('icon') }}</textarea>
 
                         <div class="valid-feedback"></div>
                         @if($errors->has('icon'))
