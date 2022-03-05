@@ -2,10 +2,26 @@
 
 @section('title', 'Dashboard')
 
+@push('css')
+    <style>
+        .list-group-item {
+            font-weight: 900;
+        }
+        .navbar-nav .nav-link {
+            padding: 10px;
+        }
+    </style>
+@endpush
+
+
 @section('content')
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-5 px-5">
+
 
      @guest
+
         <p> Please <a href="{{ route('login') }}">login</a> or <a href="{{ route('register') }}">register</a>. </p>
     @else
          <div class="row">
@@ -43,7 +59,8 @@
                      </li>
                      <li class="list-group-item d-flex justify-content-between">
                          <div>
-                             <h6 class="my-0">Total Tag</h6>
+                             {{--<h6 class="my-0">Total Tag @hello('sachin')</h6>--}}
+                             <h6 class="my-0">Total Tag </h6>
                          </div>
                          <span class="text-muted">{{ $data['total-tags'] }}</span>
                      </li>

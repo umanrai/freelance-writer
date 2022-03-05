@@ -25,8 +25,7 @@ class DashboardController extends BaseController
        $data['total-articles-publised'] = Article::where('writer_id', auth()->id())->where('is_completed_by_writer', 1)->count();
        $data['total-earned'] = Article::where('writer_id', auth()->id())->where('is_completed_by_writer', 1)->sum('wages');
 
-        return view('admin.dashboard')
-            ->with('data', $data);
+        return view('admin.dashboard')->with('data', $data);
    }
 
 }

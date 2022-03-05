@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Misc\Cache;
+use App\Misc\Cacher;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // Facad
+        app()->bind('cacher', function(){
+            return new Cacher();
+        });
     }
 
     /**
@@ -23,6 +28,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Blade directive
+        \Blade::directive('hello', function ($expression) {
+            return "<?php echo 'Hello, '.$expression; ?>";
+        });
     }
 }

@@ -19,10 +19,10 @@
             <table class="table table-striped table-sm">
                 <thead>
                 <tr>
-                    <td>ID</td>
-                    <td>Title</td>
-                    <td>Body</td>
-                    <td colspan="3">Action</td>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Body</th>
+                    <th colspan="3">Action</th>
                 </tr>
                 </thead>
                 <tbody>

@@ -32,3 +32,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 - Modify db configuration
 - ``php artisan migrate --seed``
 
+## Virtual host
+
+- C:\xampp\apache\conf\extra\httpd-vhosts
+- C:\WINDOWS\system32\drivers\etc\ Open the "hosts" file :

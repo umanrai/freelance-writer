@@ -17,9 +17,15 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
 
+
+      @stack('css')
     <style>
         .error {
             color:red;
         }
+         .nav-link {
+             display: initial;
+         }
+
     </style>
   </head>

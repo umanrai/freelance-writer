@@ -76,5 +76,5 @@
             @yield('content')
         </main>
     </div>
-</body>
+</body>n
 </html>
