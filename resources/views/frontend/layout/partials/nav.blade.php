@@ -10,7 +10,6 @@
                 <li><a class="nav-link scrollto" href="#services">Services</a></li>
                 <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
                 <li><a class="nav-link scrollto " href="#faq">Faq</a></li>
-                <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
 
                 @auth
 
@@ -18,11 +17,15 @@
                         <a class="getstarted scrollto" href="{{ route('register') }}">Dashboard</a>
                     </li>
                     <li>
-                        <a class="getstarted scrollto" href="{{ route('logout') }}"
+                        <a class="getstarted" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             {{ __('Sign out') }}
                         </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </li>
 
                 @else
