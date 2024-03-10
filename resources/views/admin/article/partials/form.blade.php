@@ -168,10 +168,13 @@
 
             @if ($isEditable || !isset($article) || $article->writer_id === auth()->id())
 
-                <input type="hidden" name="prompt_title" value="{{ $article->title }}">
-                <input type="hidden" name="prompt_desc" value="{{ $article->body }}">
+                <input type="hidden" name="prompt_title" value="{{ $article->title ?? '' }}">
+                <input type="hidden" name="prompt_desc" value="{{ $article->body ?? '' }}">
 
-                <button class="btn btn-secondary generate-using-ai">Generate  Using AI</button>
+                @if(auth()->user()->isWriter())
+                        <button class="btn btn-secondary generate-using-ai">Generate  Using AI</button>
+                @endif
+
                 <button type="submit" class="btn btn-primary">Submit</button>
             @endif
 

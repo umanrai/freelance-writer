@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Misc\Cache;
 use App\Misc\Cacher;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -32,5 +33,7 @@ class AppServiceProvider extends ServiceProvider
         \Blade::directive('hello', function ($expression) {
             return "<?php echo 'Hello, '.$expression; ?>";
         });
+
+        Paginator::useBootstrapFour();
     }
 }

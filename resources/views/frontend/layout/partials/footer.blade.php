@@ -12,10 +12,11 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container ">
 
-        <div class="copyright-wrap d-md-flex py-4">
+        <div class="copyright-wrap d-md-flex ">
             <div class="me-md-auto text-center text-md-start">
+
                 <div class="copyright">
                     &copy; Copyright <strong><span>Freelance Writer</span></strong>. All Rights Reserved
                 </div>

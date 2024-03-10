@@ -18,10 +18,15 @@
 @endsection
 
 @push('js')
-    <script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <script>
         $(function () {
             $(document).on('click', '.generate-using-ai', function (e) {
                 e.preventDefault()
+
+                var $this = $(this);
+
+                $this.prop('disabled', true)
+                    .html( ' Generating using AI ... <i class="fa fa-spin fa-spinner"></i>' );
 
                 $.ajax({
                     type: 'POST',
@@ -32,11 +37,15 @@
                         _token: '{{ csrf_token() }}'
                     },
                     success: function(data) {
-                        console.log(data);
                         $('textarea[name=description]').val(data);
+                        $this.prop('disabled', false)
+                            .html( ' Generate using AI' );
                     },
                     error: function(xhr, status, error) {
                         toastr.error(xhr.responseJSON.message, 'AI Error')
+
+                        $this.prop('disabled', false)
+                            .html( ' Generate using AI' );
                     }
                 });
             })

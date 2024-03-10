@@ -126,7 +126,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="8" class="text-center">No Article Added !</td>
+                        <td colspan="12" class="text-center">No Article Added !</td>
                     </tr>
                 @endforelse
                 </tbody>

@@ -14,7 +14,7 @@ body {
 }
 
 a {
-  color: #5846f9;
+  color: black;
   text-decoration: none;
 }
 
@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: #5846f9;
+  background: #555;
   width: 40px;
   height: 40px;
   border-radius: 4px;
@@ -49,7 +49,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 0;
 }
 .back-to-top:hover {
-  background: #7b27d8;
+  background: #444444;
   color: #fff;
 }
 .back-to-top.active {
@@ -119,7 +119,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 20px 0;
 }
 #header.header-scrolled, #header.header-inner-pages {
-  background: rgba(24, 6, 185, 0.8);
+  background: #555;
   padding: 12px 0;
 }
 #header .logo {
@@ -367,7 +367,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: linear-gradient(45deg, rgba(86, 58, 250, 0.9) 0%, rgba(116, 15, 214, 0.9) 100%), url("../img/hero-bg.jpg") center center no-repeat;
+  background: #555;
   background-size: cover;
 }
 #hero .container, #hero .container-fluid {
@@ -508,7 +508,7 @@ section {
   display: block;
   width: 50px;
   height: 3px;
-  background: #5846f9;
+  background: #444444;
   bottom: 0;
   left: calc(50% - 25px);
 }
@@ -569,7 +569,7 @@ section {
 # Counts
 --------------------------------------------------------------*/
 .counts {
-  background: linear-gradient(90deg, rgba(88, 70, 249, 0.5) 0%, rgba(123, 39, 216, 0.5) 100%), url("../img/counts-bg.png") center center no-repeat;
+  background-color: #555;
   padding: 80px 0 60px 0;
 }
 .counts .counters span {
@@ -1057,10 +1057,10 @@ section {
 # Frequently Asked Questions
 --------------------------------------------------------------*/
 .faq {
-  background: linear-gradient(42deg, #5846f9 0%, #7b27d8 100%);
+  background: #FAFAFA;
 }
 .faq .section-title h2, .faq .section-title p {
-  color: #fff;
+  color: black;
 }
 .faq .section-title h2::after {
   background: rgba(255, 255, 255, 0.6);
@@ -1097,7 +1097,7 @@ section {
   position: absolute;
   right: 0;
   left: 20px;
-  color: #8577fb;
+  color: #555;
 }
 .faq .faq-list .icon-show, .faq .faq-list .icon-close {
   font-size: 24px;
@@ -1113,10 +1113,10 @@ section {
   display: none;
 }
 .faq .faq-list a.collapsed {
-  color: #2c4964;
+  color: #555;
 }
 .faq .faq-list a.collapsed:hover {
-  color: #5846f9;
+  color: #555;
 }
 .faq .faq-list a.collapsed .icon-show {
   display: inline-block;
@@ -1295,19 +1295,18 @@ section {
 #footer {
   color: #fff;
   font-size: 14px;
-  background: linear-gradient(45deg, rgba(86, 58, 250, 0.9) 0%, rgba(116, 15, 214, 0.9) 100%), url("../img/hero-bg.jpg") center center no-repeat;
+  background-color: #191919;
   background-size: cover;
 }
 #footer .footer-top {
-  padding: 60px 0 30px 0;
+  padding-top: 20px;
   position: relative;
 }
 #footer .footer-top .footer-contact {
-  margin-bottom: 30px;
+  margin-bottom: 0;
 }
 #footer .footer-top .footer-contact h3 {
   font-size: 28px;
-  margin: 0 0 30px 0;
   padding: 2px 0 2px 0;
   line-height: 1;
   font-weight: 500;
@@ -1357,6 +1356,7 @@ section {
   text-decoration: underline;
   color: #fff;
 }
+
 #footer .footer-newsletter {
   font-size: 15px;
 }
@@ -1399,7 +1399,8 @@ section {
   background: #5846f9;
 }
 #footer .copyright-wrap {
-  border-top: 1px solid #8577fb;
+  border-top: none;
+  padding: 0 0 10px 0;
 }
 #footer .credits {
   padding-top: 5px;
